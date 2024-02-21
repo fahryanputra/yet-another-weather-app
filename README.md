@@ -1,3 +1,3 @@
-# javascript-webpack-template-repository
+# yet-another-weather-app
 
-A template repository for web development using javascript and webpack.
+A weather app made using javascript and webpack.
