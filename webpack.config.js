@@ -35,6 +35,9 @@ module.exports = {
   resolve: {
     alias: {
       Templates: path.resolve(__dirname, "src/templates/"),
+      Styles: path.resolve(__dirname, "src/styles/"),
+      Modules: path.resolve(__dirname, "src/components/modules/"),
+      UI: path.resolve(__dirname, "src/components/ui/"),
     },
   },
 };
