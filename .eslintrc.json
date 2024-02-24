@@ -26,7 +26,8 @@
           ["Templates", "./src/templates/"],
           ["Styles", "./src/styles/"],
           ["Modules", "./src/components/modules/"],
-          ["UI", ".src/components/ui/"]
+          ["UI", ".src/components/ui/"],
+          ["Utilities", ".src/components/utilities/"]
         ]
       }
     }

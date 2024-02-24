@@ -38,6 +38,7 @@ module.exports = {
       Styles: path.resolve(__dirname, "src/styles/"),
       Modules: path.resolve(__dirname, "src/components/modules/"),
       UI: path.resolve(__dirname, "src/components/ui/"),
+      Utilities: path.resolve(__dirname, "src/components/utilities/"),
     },
   },
 };

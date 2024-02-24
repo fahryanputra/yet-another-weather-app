@@ -1,4 +1,4 @@
-class Weather {
+class Forecast {
   constructor(weather) {
     this.date = "Unavailable";
     this.day = "Unavailable";
@@ -41,4 +41,4 @@ class Weather {
   }
 }
 
-export default Weather;
+export default Forecast;
