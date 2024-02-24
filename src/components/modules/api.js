@@ -14,7 +14,7 @@ async function fetchWeather(key, location) {
   const longitude = coordResponse.coord.lon;
 
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${key}`,
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${key}`,
     { mode: "cors" },
   );
 
