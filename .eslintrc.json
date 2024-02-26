@@ -8,17 +8,7 @@
   "parserOptions": {
     "ecmaVersion": "latest"
   },
-  "rules": {
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": false,
-        "optionalDependencies": false,
-        "peerDependencies": false,
-        "usePackageJson": true
-      }
-    ]
-  },
+  "rules": {},
   "settings": {
     "import/resolver": {
       "alias": {
@@ -26,8 +16,8 @@
           ["Templates", "./src/templates/"],
           ["Styles", "./src/styles/"],
           ["Modules", "./src/components/modules/"],
-          ["UI", ".src/components/ui/"],
-          ["Utilities", ".src/components/utilities/"]
+          ["UI", "./src/components/ui/"],
+          ["Utilities", "./src/components/utilities/"]
         ]
       }
     }

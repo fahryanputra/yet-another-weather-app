@@ -1,4 +1,5 @@
 import fetchWeather from "Modules/api";
+import renderDailyInfo from "UI/renderDailyInfo";
 import * as forecast from "Modules/forecastUtils";
 
 async function main() {
@@ -6,11 +7,11 @@ async function main() {
   const location = "bogor";
 
   const data = await fetchWeather(API_KEY, location);
-  const current = forecast.getCurrent(data);
+  // const current = forecast.getCurrent(data);
   const daily = forecast.getDaily(data);
 
-  console.log(current);
-  console.log(daily);
+  const container = document.querySelector(".content");
+  container.appendChild(renderDailyInfo(daily));
 }
 
 main();

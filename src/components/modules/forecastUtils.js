@@ -18,14 +18,16 @@ function getCurrent(data) {
 function getDaily(data) {
   const array = [];
 
-  for (let index = 1; index < data.daily.length; index++) {
+  for (let index = 1; index < data.daily.length; index += 1) {
     const element = data.daily[index];
 
     const date = add(currentDate, { days: index });
     const day = format(date, "EEEE");
+    const image = element.weather[0].main;
     const temperature = element.temp.day;
 
     const weather = new Forecast(element.weather[0].description);
+    weather.setImage(image);
     weather.setDate(date);
     weather.setDay(day);
     weather.setTemperature(temperature);

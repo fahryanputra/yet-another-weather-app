@@ -2,6 +2,7 @@ class Forecast {
   constructor(weather) {
     this.date = "Unavailable";
     this.day = "Unavailable";
+    this.image = "Unavailable";
     this.weather = weather;
     this.temperature = "Unavailable";
   }
@@ -13,6 +14,10 @@ class Forecast {
 
   getDay() {
     return this.day;
+  }
+
+  getImage() {
+    return this.image;
   }
 
   getWeather() {
@@ -30,6 +35,10 @@ class Forecast {
 
   setDay(day) {
     this.day = day;
+  }
+
+  setImage(image) {
+    this.image = image.toLocaleLowerCase();
   }
 
   setWeather(weather) {
