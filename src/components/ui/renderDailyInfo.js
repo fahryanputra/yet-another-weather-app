@@ -1,14 +1,15 @@
-import * as utils from "Utilities/utility";
+import { createText } from "Utilities/utility";
+import { getIcon } from "Modules/forecastUtils";
 
 function renderCard(data) {
   const container = document.createElement("div");
   container.classList.add("card-forecast");
 
-  const dayText = utils.createText(data.day);
-  const weatherImage = utils.createWeatherIcon(data.image);
-  const weatherText = utils.createText(data.weather);
-  const temperatureText = utils.createText(
-    `${data.temperature + String.fromCharCode(176)}C`,
+  const dayText = createText(data.day);
+  const weatherImage = getIcon(data.image);
+  const weatherText = createText(data.weather);
+  const temperatureText = createText(
+    `${Math.round(data.temperature) + String.fromCharCode(176)}C`,
   );
 
   container.appendChild(dayText);
@@ -26,8 +27,6 @@ function renderDailyInfo(array) {
   array.forEach((element) => {
     container.appendChild(renderCard(element));
   });
-
-  console.log(array);
 
   return container;
 }

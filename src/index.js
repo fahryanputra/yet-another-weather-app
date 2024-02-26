@@ -1,3 +1,4 @@
+import "Styles/style.css";
 import fetchWeather from "Modules/api";
 import renderDailyInfo from "UI/renderDailyInfo";
 import * as forecast from "Modules/forecastUtils";
@@ -10,13 +11,9 @@ async function main() {
   const data = api.getData();
   const city = api.getCity();
 
-  // const current = forecast.getCurrent(data);
   const daily = forecast.getDaily(data, city);
-
-  const container = document.querySelector(".content");
+  const container = document.querySelector(".bottom-panel");
   container.appendChild(renderDailyInfo(daily));
-
-  console.log(forecast.getCurrent(data, city));
 }
 
 main();

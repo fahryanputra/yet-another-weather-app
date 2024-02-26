@@ -1,3 +1,4 @@
+import { createIcon } from "Utilities/utility";
 import { add, format } from "date-fns";
 import Forecast from "Modules/Forecast";
 
@@ -17,8 +18,8 @@ function getCurrent(data, city) {
   weather.setImage(image);
   weather.setDate(currentDate);
   weather.setDay(day);
-  weather.setTemperature(temperature);
-  weather.setFeelsLike(feelsLike);
+  weather.setTemperature(Math.round(temperature));
+  weather.setFeelsLike(Math.round(feelsLike));
   weather.setHumidity(humidity);
   weather.setPop(pop);
   weather.setWindSpeed(windSpeed);
@@ -50,4 +51,25 @@ function getDaily(data, city) {
   return array;
 }
 
-export { getCurrent, getDaily };
+function getIcon(text) {
+  switch (text.toLocaleLowerCase()) {
+    case "thunderstorm":
+      return createIcon(text);
+    case "drizzle":
+      return createIcon("rainy");
+    case "rain":
+      return createIcon("rainy");
+    case "snow":
+      return createIcon("weather_snowy");
+    case "atmosphere":
+      return createIcon("foggy");
+    case "clear":
+      return createIcon("clear_day");
+    case "clouds":
+      return createIcon("cloud");
+    default:
+      return "Image not found";
+  }
+}
+
+export { getCurrent, getDaily, getIcon };

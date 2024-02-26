@@ -41,26 +41,4 @@ function createIcon(text) {
   return icon;
 }
 
-// Create weather icon
-function createWeatherIcon(text) {
-  switch (text) {
-    case "thunderstorm":
-      return createIcon(text);
-    case "drizzle":
-      return createIcon("rainy");
-    case "rain":
-      return createIcon("rainy");
-    case "snow":
-      return createIcon("weather_snowy");
-    case "atmosphere":
-      return createIcon("foggy");
-    case "clear":
-      return createIcon("clear_day");
-    case "clouds":
-      return createIcon("cloud");
-    default:
-      return "Image not found";
-  }
-}
-
-export { createText, createImage, createIcon, createWeatherIcon };
+export { createText, createImage, createIcon };

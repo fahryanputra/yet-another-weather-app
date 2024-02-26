@@ -27,7 +27,6 @@ async function fetchWeather(key, location) {
   );
 
   const data = await response.json();
-  console.log(data);
   const getData = () => data;
   const getCity = () => city;
 

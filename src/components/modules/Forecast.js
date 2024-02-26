@@ -67,7 +67,7 @@ class Forecast {
   }
 
   setImage(image) {
-    this.image = image.toLocaleLowerCase();
+    this.image = image;
   }
 
   setWeather(weather) {
