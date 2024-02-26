@@ -15,6 +15,8 @@ async function main() {
 
   const container = document.querySelector(".content");
   container.appendChild(renderDailyInfo(daily));
+
+  console.log(forecast.getCurrent(data, city));
 }
 
 main();

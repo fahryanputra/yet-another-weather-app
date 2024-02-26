@@ -6,9 +6,11 @@ const currentDate = new Date();
 function getCurrent(data, city) {
   const day = format(currentDate, "EEEE");
   const temperature = data.current.temp;
+  const image = data.current.weather[0].main;
 
   const weather = new Forecast(data.current.weather[0].description);
   weather.setCity(city);
+  weather.setImage(image);
   weather.setDate(currentDate);
   weather.setDay(day);
   weather.setTemperature(temperature);
