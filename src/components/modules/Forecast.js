@@ -1,5 +1,6 @@
 class Forecast {
   constructor(weather) {
+    this.city = "Unavailable";
     this.date = "Unavailable";
     this.day = "Unavailable";
     this.image = "Unavailable";
@@ -8,6 +9,10 @@ class Forecast {
   }
 
   // Getter
+  getCity() {
+    return this.city;
+  }
+
   getDate() {
     return this.date;
   }
@@ -29,6 +34,10 @@ class Forecast {
   }
 
   // Setter
+  setCity(city) {
+    this.city = city;
+  }
+
   setDate(date) {
     this.date = date;
   }

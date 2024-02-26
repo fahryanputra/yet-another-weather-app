@@ -3,11 +3,12 @@ import Forecast from "Modules/Forecast";
 
 const currentDate = new Date();
 
-function getCurrent(data) {
+function getCurrent(data, city) {
   const day = format(currentDate, "EEEE");
   const temperature = data.current.temp;
 
   const weather = new Forecast(data.current.weather[0].description);
+  weather.setCity(city);
   weather.setDate(currentDate);
   weather.setDay(day);
   weather.setTemperature(temperature);
@@ -15,7 +16,7 @@ function getCurrent(data) {
   return weather;
 }
 
-function getDaily(data) {
+function getDaily(data, city) {
   const array = [];
 
   for (let index = 1; index < data.daily.length; index += 1) {
@@ -27,6 +28,7 @@ function getDaily(data) {
     const temperature = element.temp.day;
 
     const weather = new Forecast(element.weather[0].description);
+    weather.setCity(city);
     weather.setImage(image);
     weather.setDate(date);
     weather.setDay(day);
