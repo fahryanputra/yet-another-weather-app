@@ -6,6 +6,10 @@ class Forecast {
     this.image = "Unavailable";
     this.weather = weather;
     this.temperature = "Unavailable";
+    this.feelsLike = "Unavailable";
+    this.humidity = "Unavailable";
+    this.pop = "Unavailable";
+    this.windSpeed = "Unavailable";
   }
 
   // Getter
@@ -33,6 +37,22 @@ class Forecast {
     return this.temperature;
   }
 
+  getFeelsLike() {
+    return this.feelsLike;
+  }
+
+  getHumidity() {
+    return this.humidity;
+  }
+
+  getPop() {
+    return this.pop;
+  }
+
+  getWindSpeed() {
+    return this.windSpeed;
+  }
+
   // Setter
   setCity(city) {
     this.city = city;
@@ -56,6 +76,22 @@ class Forecast {
 
   setTemperature(temperature) {
     this.temperature = temperature;
+  }
+
+  setFeelsLike(feelsLike) {
+    this.feelsLike = feelsLike;
+  }
+
+  setHumidity(humidity) {
+    this.humidity = humidity;
+  }
+
+  setPop(pop) {
+    this.pop = pop;
+  }
+
+  setWindSpeed(windSpeed) {
+    this.windSpeed = windSpeed;
   }
 }
 

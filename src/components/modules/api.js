@@ -14,22 +14,22 @@ async function fetchCoord(key, location) {
 }
 
 async function fetchWeather(key, location) {
-  const coordResponse = await fetchCoord(key, location);
-  const coordData = coordResponse.getData();
-  const coordCity = coordResponse.getCity();
+  const api = await fetchCoord(key, location);
+  const coord = api.getData();
+  const city = api.getCity();
 
-  const latitude = coordData.coord.lat;
-  const longitude = coordData.coord.lon;
+  const { lat } = coord.coord;
+  const { lon } = coord.coord;
 
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${key}`,
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${key}`,
     { mode: "cors" },
   );
 
   const data = await response.json();
   console.log(data);
   const getData = () => data;
-  const getCity = () => coordCity;
+  const getCity = () => city;
 
   return { getData, getCity };
 }

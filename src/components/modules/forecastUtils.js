@@ -7,6 +7,10 @@ function getCurrent(data, city) {
   const day = format(currentDate, "EEEE");
   const temperature = data.current.temp;
   const image = data.current.weather[0].main;
+  const feelsLike = data.current.feels_like;
+  const { humidity } = data.current;
+  const { pop } = data.daily[0];
+  const windSpeed = data.current.wind_speed;
 
   const weather = new Forecast(data.current.weather[0].description);
   weather.setCity(city);
@@ -14,6 +18,10 @@ function getCurrent(data, city) {
   weather.setDate(currentDate);
   weather.setDay(day);
   weather.setTemperature(temperature);
+  weather.setFeelsLike(feelsLike);
+  weather.setHumidity(humidity);
+  weather.setPop(pop);
+  weather.setWindSpeed(windSpeed);
 
   return weather;
 }
