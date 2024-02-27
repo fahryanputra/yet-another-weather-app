@@ -10,6 +10,18 @@ body {
 
 header {
   height: 10vh;
+  display: flex;
+  padding: 0 1rem;
+}
+
+header > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-bar {
+  margin-left: auto;
 }
 
 .content {
@@ -78,4 +90,7 @@ header {
 
 footer {
   height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

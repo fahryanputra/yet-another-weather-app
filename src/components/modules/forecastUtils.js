@@ -5,7 +5,8 @@ import Forecast from "Modules/Forecast";
 
 const currentDate = new Date();
 
-async function getForecast(API_KEY, location) {
+async function getForecast(location) {
+  const API_KEY = "90045be68e0635d15fad9cf660663a7f";
   const api = await fetchWeather(API_KEY, location);
 
   const data = api.getData();

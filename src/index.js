@@ -1,4 +1,8 @@
 import "Styles/style.css";
-import renderPage from "UI/renderPage";
+import renderContent from "UI/renderContent";
+import renderHeader from "UI/renderHeader";
+import renderFooter from "UI/renderFooter";
 
-renderPage();
+renderHeader();
+renderContent();
+renderFooter();
