@@ -1,8 +1,21 @@
 import { createIcon } from "Utilities/utility";
 import { add, format } from "date-fns";
+import fetchWeather from "Modules/api";
 import Forecast from "Modules/Forecast";
 
 const currentDate = new Date();
+
+async function getForecast(API_KEY, location) {
+  const api = await fetchWeather(API_KEY, location);
+
+  const data = api.getData();
+  const city = api.getCity();
+
+  const getData = () => data;
+  const getCity = () => city;
+
+  return { getData, getCity };
+}
 
 function getCurrent(data, city) {
   const day = format(currentDate, "EEEE");
@@ -72,4 +85,4 @@ function getIcon(text) {
   }
 }
 
-export { getCurrent, getDaily, getIcon };
+export { getForecast, getCurrent, getDaily, getIcon };
