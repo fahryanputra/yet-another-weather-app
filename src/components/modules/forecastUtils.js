@@ -48,7 +48,12 @@ function getDaily(data, city) {
   for (let index = 1; index < data.daily.length; index += 1) {
     const element = data.daily[index];
 
-    const date = add(currentDate, { days: index });
+    const date = add(
+      currentDate.toLocaleString("en-US", {
+        timeZone: data.timezone,
+      }),
+      { days: index },
+    );
     const day = format(date, "EEEE");
     const image = element.weather[0].main;
     const temperature = element.temp.day;
