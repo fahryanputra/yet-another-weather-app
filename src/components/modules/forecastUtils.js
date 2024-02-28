@@ -25,6 +25,7 @@ function getCurrent(data, city) {
   const { humidity } = data.current;
   const { pop } = data.daily[0];
   const windSpeed = data.current.wind_speed;
+  const { timezone } = data;
 
   const weather = new Forecast(data.current.weather[0].description);
   weather.setCity(city);
@@ -36,6 +37,7 @@ function getCurrent(data, city) {
   weather.setHumidity(humidity);
   weather.setPop(pop);
   weather.setWindSpeed(windSpeed);
+  weather.setTimezone(timezone);
 
   return weather;
 }
@@ -75,9 +77,17 @@ function getIcon(text) {
     case "snow":
       return createIcon("weather_snowy");
     case "atmosphere":
-      return createIcon("foggy");
+    case "mist":
+    case "smoke":
     case "haze":
+    case "dust":
+    case "fog":
+    case "sand":
+    case "ash":
+    case "squall":
       return createIcon("foggy");
+    case "tornado":
+      return createIcon("tornado");
     case "clear":
       return createIcon("clear_day");
     case "clouds":

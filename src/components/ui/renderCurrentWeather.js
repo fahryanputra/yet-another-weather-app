@@ -2,13 +2,15 @@ import { createText } from "Utilities/utility";
 import { format } from "date-fns";
 import { getCurrent, getIcon } from "Modules/forecastUtils";
 
-function createLocationInfo(city) {
+function createLocationInfo(data, city) {
   const container = document.createElement("div");
   container.classList.add("location-container");
 
   const location = createText(city);
 
-  const today = new Date();
+  const today = new Date().toLocaleString("en-US", {
+    timeZone: data.timezone,
+  });
   const time = createText(format(today, "p"));
   const day = createText(format(today, "EEEE"));
   const date = createText(format(today, "d MMMM yyyy"));
@@ -50,7 +52,7 @@ function renderCurrentWeather(data, city, units) {
   const container = document.createElement("div");
   container.classList.add("left-panel");
 
-  const locationInfo = createLocationInfo(city);
+  const locationInfo = createLocationInfo(data, city);
   const weatherInfo = createWeatherInfo(data, city, units);
 
   container.appendChild(locationInfo);

@@ -48,7 +48,7 @@ function renderExtraInfo(data, city, units) {
   const pop = createInfoCard(
     "rainy",
     "Chance of rain",
-    `${current.pop * 100}%`,
+    `${Math.round(current.pop * 100)}%`,
   );
   const windSpeed = createInfoCard(
     "air",

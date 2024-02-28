@@ -10,6 +10,7 @@ class Forecast {
     this.humidity = "Unavailable";
     this.pop = "Unavailable";
     this.windSpeed = "Unavailable";
+    this.timezone = "Unavailable";
   }
 
   // Getter
@@ -53,6 +54,10 @@ class Forecast {
     return this.windSpeed;
   }
 
+  getTimezone() {
+    return this.timezone;
+  }
+
   // Setter
   setCity(city) {
     this.city = city;
@@ -92,6 +97,10 @@ class Forecast {
 
   setWindSpeed(windSpeed) {
     this.windSpeed = windSpeed;
+  }
+
+  setTimezone(timezone) {
+    this.timezone = timezone;
   }
 }
 
