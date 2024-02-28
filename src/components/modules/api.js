@@ -1,6 +1,6 @@
-async function fetchCoord(key, location) {
+async function fetchCoord(query) {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${key}`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${query.getCity()}&appid=${query.getKey()}`,
     { mode: "cors" },
   );
 
@@ -13,8 +13,8 @@ async function fetchCoord(key, location) {
   return { getData, getCity };
 }
 
-async function fetchWeather(key, location) {
-  const api = await fetchCoord(key, location);
+async function fetchWeather(query) {
+  const api = await fetchCoord(query);
   const coord = api.getData();
   const city = api.getCity();
 
@@ -22,11 +22,12 @@ async function fetchWeather(key, location) {
   const { lon } = coord.coord;
 
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${key}`,
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${query.getUnits()}&appid=${query.getKey()}`,
     { mode: "cors" },
   );
 
   const data = await response.json();
+
   const getData = () => data;
   const getCity = () => city;
 

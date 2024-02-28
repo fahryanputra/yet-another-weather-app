@@ -1,5 +1,5 @@
 import { createText, createIcon } from "Utilities/utility";
-import renderContent from "./renderContent";
+import renderContent from "UI/renderContent";
 
 function createAppTitle() {
   const icon = createIcon("routine");
@@ -12,7 +12,36 @@ function createAppTitle() {
   return container;
 }
 
-function createSearchBar() {
+function createUnitButton(query) {
+  const button = document.createElement("button");
+  button.textContent = "Metric";
+  let unit = "metric";
+
+  button.addEventListener("click", () => {
+    const content = document.querySelector(".content");
+    if (unit === "metric") {
+      button.textContent = "Imperial";
+      unit = "imperial";
+      query.setUnits("imperial");
+      content.textContent = "";
+      renderContent(query);
+    } else {
+      button.textContent = "Metric";
+      unit = "metric";
+      query.setUnits("metric");
+      content.textContent = "";
+      renderContent(query);
+    }
+  });
+
+  const container = document.createElement("div");
+  container.classList.add("btn-units");
+  container.appendChild(button);
+
+  return container;
+}
+
+function createSearchBar(query) {
   const icon = createIcon("search");
   const input = document.createElement("input");
   input.setAttribute("type", "text");
@@ -23,7 +52,8 @@ function createSearchBar() {
     if (input.value) {
       const content = document.querySelector(".content");
       content.textContent = "";
-      renderContent(input.value);
+      query.setCity(input.value);
+      renderContent(query.getCity());
     }
   });
 
@@ -36,13 +66,15 @@ function createSearchBar() {
   return container;
 }
 
-function renderHeader() {
-  const left = createAppTitle();
-  const right = createSearchBar();
+function renderHeader(query) {
+  const title = createAppTitle();
+  const units = createUnitButton(query);
+  const searchBar = createSearchBar(query);
 
   const container = document.querySelector("header");
-  container.appendChild(left);
-  container.appendChild(right);
+  container.appendChild(title);
+  container.appendChild(units);
+  container.appendChild(searchBar);
 
   return container;
 }

@@ -3,14 +3,15 @@ import renderDailyInfo from "UI/renderDailyInfo";
 import renderExtraInfo from "UI/renderExtraInfo";
 import { getForecast } from "Modules/forecastUtils";
 
-async function renderContent(location = "Jakarta") {
-  const forecast = await getForecast(location);
+async function renderContent(query) {
+  const forecast = await getForecast(query);
   const data = forecast.getData();
   const city = forecast.getCity();
+  const units = query.getUnits();
 
-  const current = renderCurrentWeather(data, city);
-  const info = renderExtraInfo(data, city);
-  const daily = renderDailyInfo(data, city);
+  const current = renderCurrentWeather(data, city, units);
+  const info = renderExtraInfo(data, city, units);
+  const daily = renderDailyInfo(data, city, units);
 
   const content = document.querySelector(".content");
   content.appendChild(current);

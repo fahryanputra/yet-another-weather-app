@@ -1,15 +1,21 @@
 import { createText } from "Utilities/utility";
 import { getIcon, getDaily } from "Modules/forecastUtils";
 
-function createDailyCard(data) {
+function createDailyCard(data, units) {
   const container = document.createElement("div");
   container.classList.add("card-forecast");
 
   const dayText = createText(data.day);
   const weatherImage = getIcon(data.image);
   const weatherText = createText(data.weather);
+
+  let tempUnits = "C";
+  if (units !== "metric") {
+    tempUnits = "F";
+  }
+
   const temperatureText = createText(
-    `${Math.round(data.temperature) + String.fromCharCode(176)}C`,
+    `${Math.round(data.temperature) + String.fromCharCode(176)}${tempUnits}`,
   );
 
   container.appendChild(dayText);
@@ -20,20 +26,20 @@ function createDailyCard(data) {
   return container;
 }
 
-function createCardContainer(array) {
+function createCardContainer(array, units) {
   const container = document.createElement("div");
   container.classList.add("card-container");
 
   array.forEach((element) => {
-    container.appendChild(createDailyCard(element));
+    container.appendChild(createDailyCard(element, units));
   });
 
   return container;
 }
 
-function renderDailyInfo(data, city) {
+function renderDailyInfo(data, city, units) {
   const daily = getDaily(data, city);
-  const dailyInfo = createCardContainer(daily);
+  const dailyInfo = createCardContainer(daily, units);
 
   const container = document.createElement("div");
   container.classList.add("bottom-panel");

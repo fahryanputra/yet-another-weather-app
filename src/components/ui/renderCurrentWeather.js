@@ -21,7 +21,7 @@ function createLocationInfo(city) {
   return container;
 }
 
-function createWeatherInfo(data, city) {
+function createWeatherInfo(data, city, units) {
   const container = document.createElement("div");
   container.classList.add("weather-container");
 
@@ -29,8 +29,14 @@ function createWeatherInfo(data, city) {
 
   const weather = createText(current.weather);
   const image = getIcon(current.image);
+
+  let tempUnits = "C";
+  if (units !== "metric") {
+    tempUnits = "F";
+  }
+
   const temperature = createText(
-    `${current.temperature}${String.fromCharCode(176)}C`,
+    `${current.temperature}${String.fromCharCode(176)}${tempUnits}`,
   );
 
   container.appendChild(temperature);
@@ -40,12 +46,12 @@ function createWeatherInfo(data, city) {
   return container;
 }
 
-function renderCurrentWeather(data, city) {
+function renderCurrentWeather(data, city, units) {
   const container = document.createElement("div");
   container.classList.add("left-panel");
 
   const locationInfo = createLocationInfo(city);
-  const weatherInfo = createWeatherInfo(data, city);
+  const weatherInfo = createWeatherInfo(data, city, units);
 
   container.appendChild(locationInfo);
   container.appendChild(weatherInfo);

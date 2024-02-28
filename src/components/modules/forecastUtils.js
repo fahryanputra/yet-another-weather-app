@@ -5,9 +5,8 @@ import Forecast from "Modules/Forecast";
 
 const currentDate = new Date();
 
-async function getForecast(location) {
-  const API_KEY = "90045be68e0635d15fad9cf660663a7f";
-  const api = await fetchWeather(API_KEY, location);
+async function getForecast(query) {
+  const api = await fetchWeather(query);
 
   const data = api.getData();
   const city = api.getCity();
@@ -76,6 +75,8 @@ function getIcon(text) {
     case "snow":
       return createIcon("weather_snowy");
     case "atmosphere":
+      return createIcon("foggy");
+    case "haze":
       return createIcon("foggy");
     case "clear":
       return createIcon("clear_day");

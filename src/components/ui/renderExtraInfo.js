@@ -24,13 +24,21 @@ function createInfoCard(image, title, value) {
   return container;
 }
 
-function renderExtraInfo(data, city) {
+function renderExtraInfo(data, city, units) {
+  let tempUnits = "C";
+  let speedUnits = "m/s";
+
+  if (units !== "metric") {
+    tempUnits = "F";
+    speedUnits = "mph";
+  }
+
   const current = getCurrent(data, city);
 
   const feelsLike = createInfoCard(
     "thermostat",
     "Feels like",
-    `${current.feelsLike}${String.fromCharCode(176)}C`,
+    `${current.feelsLike}${String.fromCharCode(176)}${tempUnits}`,
   );
   const humidity = createInfoCard(
     "humidity_percentage",
@@ -45,7 +53,7 @@ function renderExtraInfo(data, city) {
   const windSpeed = createInfoCard(
     "air",
     "Wind speed",
-    `${current.windSpeed} m/s`,
+    `${current.windSpeed} ${speedUnits}`,
   );
 
   const infoContainer = document.createElement("div");
