@@ -15,9 +15,8 @@ function createAppTitle() {
 
 function submitForm(query, input) {
   if (input.value) {
-    const content = document.querySelector(".content");
-    content.textContent = "";
     query.setCity(input.value);
+
     renderContent(query);
   }
 }

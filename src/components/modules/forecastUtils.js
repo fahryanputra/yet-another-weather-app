@@ -8,6 +8,10 @@ const currentDate = new Date();
 async function getForecast(query) {
   const api = await fetchWeather(query);
 
+  if (api === 1) {
+    return 1;
+  }
+
   const data = api.getData();
   const city = api.getCity();
 

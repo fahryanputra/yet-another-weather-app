@@ -5,6 +5,11 @@ import { getForecast } from "Modules/forecastUtils";
 
 async function renderContent(query) {
   const forecast = await getForecast(query);
+
+  if (forecast === 1) {
+    return;
+  }
+
   const data = forecast.getData();
   const city = forecast.getCity();
   const units = query.getUnits();
@@ -14,6 +19,7 @@ async function renderContent(query) {
   const daily = renderDailyInfo(data, city, units);
 
   const content = document.querySelector(".content");
+  content.textContent = "";
   content.appendChild(current);
   content.appendChild(info);
   content.appendChild(daily);
