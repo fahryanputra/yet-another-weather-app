@@ -41,4 +41,13 @@ function createIcon(text) {
   return icon;
 }
 
-export { createText, createImage, createIcon };
+// Capitalize each word in a text
+function capitalizeEachWord(text) {
+  const words = text.split(" ");
+
+  return words
+    .map((word) => word[0].toUpperCase() + word.substring(1))
+    .join(" ");
+}
+
+export { createText, createImage, createIcon, capitalizeEachWord };

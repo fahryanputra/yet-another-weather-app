@@ -1,4 +1,4 @@
-import { createText } from "Utilities/utility";
+import { createText, capitalizeEachWord } from "Utilities/utility";
 import { format } from "date-fns";
 import { getCurrent, getIcon } from "Modules/forecastUtils";
 
@@ -7,18 +7,23 @@ function createLocationInfo(data, city) {
   container.classList.add("location-container");
 
   const location = createText(city);
+  location.classList.add("city-text");
 
   const today = new Date().toLocaleString("en-US", {
     timeZone: data.timezone,
   });
   const time = createText(format(today, "p"));
+  time.classList.add("time-text");
   const day = createText(format(today, "EEEE"));
   const date = createText(format(today, "d MMMM yyyy"));
 
+  const dateContainer = document.createElement("div");
+  dateContainer.appendChild(day);
+  dateContainer.appendChild(date);
+
   container.appendChild(location);
   container.appendChild(time);
-  container.appendChild(day);
-  container.appendChild(date);
+  container.appendChild(dateContainer);
 
   return container;
 }
@@ -29,8 +34,9 @@ function createWeatherInfo(data, city, units) {
 
   const current = getCurrent(data, city);
 
-  const weather = createText(current.weather);
+  const weather = createText(capitalizeEachWord(current.weather));
   const image = getIcon(current.image);
+  image.classList.add("weather-icon");
 
   let tempUnits = "C";
   if (units !== "metric") {
@@ -40,10 +46,14 @@ function createWeatherInfo(data, city, units) {
   const temperature = createText(
     `${current.temperature}${String.fromCharCode(176)}${tempUnits}`,
   );
+  temperature.classList.add("temperature-text");
 
+  const weatherContainer = document.createElement("div");
+  weatherContainer.appendChild(image);
+  weatherContainer.appendChild(weather);
+
+  container.appendChild(weatherContainer);
   container.appendChild(temperature);
-  container.appendChild(image);
-  container.appendChild(weather);
 
   return container;
 }

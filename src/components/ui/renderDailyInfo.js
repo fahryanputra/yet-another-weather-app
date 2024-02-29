@@ -1,4 +1,4 @@
-import { createText } from "Utilities/utility";
+import { createText, capitalizeEachWord } from "Utilities/utility";
 import { getIcon, getDaily } from "Modules/forecastUtils";
 
 function createDailyCard(data, units) {
@@ -6,8 +6,10 @@ function createDailyCard(data, units) {
   container.classList.add("card-forecast");
 
   const dayText = createText(data.day);
+  dayText.classList.add("day-text");
   const weatherImage = getIcon(data.image);
-  const weatherText = createText(data.weather);
+  weatherImage.classList.add("weather-icon");
+  const weatherText = createText(capitalizeEachWord(data.weather));
 
   let tempUnits = "C";
   if (units !== "metric") {
@@ -18,10 +20,13 @@ function createDailyCard(data, units) {
     `${Math.round(data.temperature) + String.fromCharCode(176)}${tempUnits}`,
   );
 
+  const weatherContainer = document.createElement("div");
+  weatherContainer.appendChild(weatherImage);
+  weatherContainer.appendChild(weatherText);
+
   container.appendChild(dayText);
   container.appendChild(temperatureText);
-  container.appendChild(weatherImage);
-  container.appendChild(weatherText);
+  container.appendChild(weatherContainer);
 
   return container;
 }

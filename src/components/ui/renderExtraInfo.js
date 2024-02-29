@@ -3,6 +3,7 @@ import { getCurrent } from "Modules/forecastUtils";
 
 function createInfoText(title, value) {
   const infoTitle = createText(title);
+  infoTitle.classList.add("info-title");
   const infoValue = createText(value);
 
   const container = document.createElement("div");
@@ -14,6 +15,7 @@ function createInfoText(title, value) {
 
 function createInfoCard(image, title, value) {
   const icon = createIcon(image);
+  icon.classList.add("info-icon");
   const info = createInfoText(title, value);
 
   const container = document.createElement("div");
@@ -37,7 +39,7 @@ function renderExtraInfo(data, city, units) {
 
   const feelsLike = createInfoCard(
     "thermostat",
-    "Feels like",
+    "Feels Like",
     `${current.feelsLike}${String.fromCharCode(176)}${tempUnits}`,
   );
   const humidity = createInfoCard(
@@ -47,12 +49,12 @@ function renderExtraInfo(data, city, units) {
   );
   const pop = createInfoCard(
     "rainy",
-    "Chance of rain",
+    "Chance of Rain",
     `${Math.round(current.pop * 100)}%`,
   );
   const windSpeed = createInfoCard(
     "air",
-    "Wind speed",
+    "Wind Speed",
     `${current.windSpeed} ${speedUnits}`,
   );
 
