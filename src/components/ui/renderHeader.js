@@ -27,18 +27,15 @@ function createUnitButton(query) {
   let unit = "metric";
 
   button.addEventListener("click", () => {
-    const content = document.querySelector(".content");
     if (unit === "metric") {
       button.textContent = "Imperial";
       unit = "imperial";
       query.setUnits("imperial");
-      content.textContent = "";
       renderContent(query);
     } else {
       button.textContent = "Metric";
       unit = "metric";
       query.setUnits("metric");
-      content.textContent = "";
       renderContent(query);
     }
   });
